@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./styles.css";
+import "./App.css";
 
 /**
  * concept notes: styling in react
@@ -15,13 +15,16 @@ const emojiDictionary = {
   "😔": "sad",
   "🥡": "takeout box",
   "❤️": "love",
-  "😑":"annoyance" /** add some more to show how the app now expands when there's new data */
+  "😑":"annoyance",
+  "🤣": "Rolling on the Floor Laughing",
+  "😮‍💨" :"Face Exhaling",
+  "😪" :"Sleepy Face",
+  "😨" :"Fearful Face",
+  "🔪" :"Kitchen Knife",
+  "🕰️" :"Mantelpiece Clock"
 };
 
-/**
- * Bonus feature
- * converting an object to array of keys
- */
+
 const emojis = Object.keys(emojiDictionary);
 
 export default function App() {
@@ -44,32 +47,35 @@ export default function App() {
   }
 
   return (
-    /** concept 3 is onchange */
+  
     <div className="App">
-      <h1>Emoji Translator</h1>
+      <h1>Emoji Interpreter</h1>
       <input
         onChange={changeHandler}
         value={emoji}
         placeholder={"Search your emoji"}
         style={{
           padding: "1em",
-          minWidth: "80%"
+          minWidth: "50%"
         }}
       />
       <h2> {emoji} </h2> 
       <h3> {meaning} </h3> 
+      <div className="tray">
       {
-        
+   
         emojis.map((emoji) => (
           <span
+          className="obj"
             onClick={() => emojiClickHandler(emoji)}
-            style={{ fontSize: "2rem", padding: "0.5rem", cursor: "pointer" }}
+            style={{ fontSize: "2rem", cursor: "pointer" }}
           >
             {" "}
             {emoji}{" "}
           </span>
         ))
       }
+      </div>
     </div>
   );
 }
